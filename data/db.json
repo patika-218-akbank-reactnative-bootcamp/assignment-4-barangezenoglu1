@@ -1,0 +1,16 @@
+{
+  "test": [
+    {
+      "id": 1,
+      "name": "Baran",
+      "surName": "Gezen",
+      "email": "kartalbaran@hotmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Senem",
+      "surname": "Sanal",
+      "email": "senemsanal@hotmail.com"
+    }
+  ]
+}
