@@ -10,7 +10,7 @@ import {
 import WelcomeLogo from '../assets/WelcomeLogo.png';
 import {CustomButton} from '../components/CustomButton';
 
-export const Welcome = () => {
+export const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -22,16 +22,22 @@ export const Welcome = () => {
             title={'Sign Up'}
             buttonContainerStyle={styles.buttonContainer}
             buttonTextStyle={styles.buttonText}
-            onPress={() => console.log('Pressed Sign up')}
+            onPress={() => navigation.navigate('SignUp')}
           />
           <CustomButton
             title={'Sign In'}
             buttonContainerStyle={styles.buttonContainer}
             buttonTextStyle={styles.buttonText}
-            onPress={() => console.log('Pressed Sign In')}
+            onPress={() => navigation.navigate('SignIn')}
           />
         </View>
       </ImageBackground>
+      {/*   <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+        </Stack.Navigator>
+      </NavigationContainer> */}
     </View>
   );
 };
