@@ -1,28 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {Welcome} from './src/screens/WelcomeScreen';
 const App = () => {
-  const [data, setData] = useState();
-  const axios = require('axios');
-  console.log('data', data);
-  useEffect(() => {
-    axios.get('http://10.0.2.2:3000/test').then(response => {
-      setData(response.data);
-    });
-/*     axios.post('http://10.0.2.2:3000/test', {
-      id: 2,
-      name: 'Senem',
-      surname: 'Sanal',
-      email: 'senemsanal@hotmail.com',
-    }); */
-  }, []);
   return (
-    <View>
-      <Text>Baran</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Welcome />
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
