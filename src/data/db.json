@@ -1,16 +1,16 @@
 {
-  "test": [
+  "registeredUsers": [
     {
-      "id": 1,
-      "name": "Baran",
-      "surName": "Gezen",
-      "email": "kartalbaran@hotmail.com"
+      "userMail": "barangezen@hotmail.com",
+      "userName": "barangezen",
+      "userPassword": "123123",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Senem",
-      "surname": "Sanal",
-      "email": "senemsanal@hotmail.com"
+      "userMail": "alikaner35@hotmail.com",
+      "userName": "dombikali",
+      "userPassword": "123456",
+      "id": 2
     }
   ]
 }

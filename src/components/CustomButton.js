@@ -6,9 +6,10 @@ export const CustomButton = ({
   buttonContainerStyle,
   buttonTextStyle,
   onPress,
+  isDisabled,
 }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} disabled={isDisabled}>
       <View style={buttonContainerStyle}>
         <Text style={buttonTextStyle}>{title}</Text>
       </View>

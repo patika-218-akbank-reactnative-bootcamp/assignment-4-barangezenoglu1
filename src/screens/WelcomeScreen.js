@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import WelcomeLogo from '../assets/WelcomeLogo.png';
 import {CustomButton} from '../components/CustomButton';
 
@@ -32,12 +25,6 @@ export const Welcome = ({navigation}) => {
           />
         </View>
       </ImageBackground>
-      {/*   <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="SignIn" component={SignIn} />
-        </Stack.Navigator>
-      </NavigationContainer> */}
     </View>
   );
 };
@@ -45,7 +32,6 @@ export const Welcome = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
   },
   imageBackGround: {
     flex: 1,
@@ -62,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(247, 167, 44, 0.8)',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 50,
+    borderRadius: 20,
     margin: 10,
   },
   buttonText: {
