@@ -11,6 +11,12 @@
       "userName": "dombikali",
       "userPassword": "123456",
       "id": 2
+    },
+    {
+      "userMail": "oguztriplers@hotmail.com",
+      "userName": "mt07lover",
+      "userPassword": "121212",
+      "id": 3
     }
   ]
 }
