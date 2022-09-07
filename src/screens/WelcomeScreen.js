@@ -6,7 +6,6 @@ import {CustomButton} from '../components/CustomButton';
 
 export const Welcome = ({navigation}) => {
   const [asyncStorageValue, setAsyncStorageValue] = useState();
-  console.log('asyncStorageValue', asyncStorageValue);
   const getRegisteredUser = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('registeredUser');

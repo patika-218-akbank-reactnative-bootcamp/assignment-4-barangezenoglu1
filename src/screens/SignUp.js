@@ -46,7 +46,6 @@ export const SignUp = ({navigation}) => {
       userName: enteredUserName,
       userPassword: enteredUserPassword,
     });
-    console.log('registerInfo', registerInfo);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enteredUserMail, enteredUserName, enteredUserPassword]);
   const styles = StyleSheet.create({
