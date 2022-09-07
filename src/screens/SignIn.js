@@ -27,7 +27,7 @@ export const SignIn = ({navigation}) => {
   };
   const handleLogIn = () => {
     /*  setActiveUser(registeredUser); */
-    navigation.navigate('Home');
+    navigation.navigate('MainScreens', {screen: 'Home'});
     setUserAsyncStorage(registeredUser);
   };
   useEffect(() => {

@@ -38,7 +38,7 @@ export const SignUp = ({navigation}) => {
     setEnteredUserName('');
     setEnteredUserPassword('');
     setEnteredPasswordAgain('');
-    navigation.navigate('Home');
+    navigation.navigate('MainScreens', {screen: 'Home'});
   };
   useEffect(() => {
     setRegisterInfo({
