@@ -4,6 +4,7 @@ import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import Login from '../assets/Login.png';
 import {CustomButton} from '../components/CustomButton';
 import {ActiveUserContext} from '../context/ActiveUserContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignIn = ({navigation}) => {
   const {setActiveUser} = useContext(ActiveUserContext);
@@ -17,10 +18,20 @@ export const SignIn = ({navigation}) => {
       user.userName === loggedUser.userName &&
       user.userPassword === loggedUser.userPassword,
   );
-  console.log('registeredUser', registeredUser);
+  const setUserAsyncStorage = async value => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('registeredUser', jsonValue);
+    } catch (e) {
+      // save error
+    }
+
+    console.log('Done.');
+  };
   const handleLogIn = () => {
     setActiveUser(registeredUser);
     navigation.navigate('Home');
+    setUserAsyncStorage(registeredUser);
   };
   useEffect(() => {
     axios.get('http://10.0.2.2:3000/registeredUsers').then(response => {
