@@ -3,11 +3,10 @@ import axios from 'axios';
 import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import Login from '../assets/Login.png';
 import {CustomButton} from '../components/CustomButton';
-import {ActiveUserContext} from '../context/ActiveUserContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignIn = ({navigation}) => {
-  const {setActiveUser} = useContext(ActiveUserContext);
+  /* const {setActiveUser} = useContext(ActiveUserContext); */
   const [registeredUsers, setRegisteredUsers] = useState(null);
   const [loggedUser, setLoggedUser] = useState({
     userName: '',
@@ -25,11 +24,9 @@ export const SignIn = ({navigation}) => {
     } catch (e) {
       // save error
     }
-
-    console.log('Done.');
   };
   const handleLogIn = () => {
-    setActiveUser(registeredUser);
+    /*  setActiveUser(registeredUser); */
     navigation.navigate('Home');
     setUserAsyncStorage(registeredUser);
   };

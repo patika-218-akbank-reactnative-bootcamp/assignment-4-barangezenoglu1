@@ -6,21 +6,21 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SignUp} from './src/screens/SignUp';
 import {SignIn} from './src/screens/SignIn';
 import {Home} from './src/screens/Home';
-import {ActiveUserProvider} from './src/context/ActiveUserProvider';
-
+import {Provider} from 'react-redux';
+import {store} from './src/store';
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
-        <ActiveUserProvider>
+        <Provider store={store}>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SignIn" component={SignIn} />
           </Stack.Navigator>
-        </ActiveUserProvider>
+        </Provider>
       </NavigationContainer>
     </SafeAreaView>
   );
