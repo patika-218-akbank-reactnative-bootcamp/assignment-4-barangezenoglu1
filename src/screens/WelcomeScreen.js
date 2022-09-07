@@ -26,7 +26,7 @@ export const Welcome = ({navigation}) => {
   useEffect(() => {
     getRegisteredUser();
     if (asyncStorageValue?.length > 0) {
-      return navigation.navigate('Home');
+      return navigation.navigate('MainScreens', {screen: 'Home'});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asyncStorageValue]);
