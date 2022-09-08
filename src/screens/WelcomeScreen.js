@@ -1,11 +1,12 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import WelcomeLogo from '../assets/WelcomeLogo.png';
 import {CustomButton} from '../components/CustomButton';
+import {useGetsyncStorageValue} from '../hooks/getAsyncStorageValue';
 
 export const Welcome = ({navigation}) => {
-  const [asyncStorageValue, setAsyncStorageValue] = useState();
+  const asyncStorageValue = useGetsyncStorageValue('registeredUser');
+  /*  const [asyncStorageValue, setAsyncStorageValue] = useState();
   const getRegisteredUser = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('registeredUser');
@@ -13,7 +14,7 @@ export const Welcome = ({navigation}) => {
     } catch (e) {
       // read error
     }
-  };
+  }; */
   /* const removeValue = async () => {
     try {
       await AsyncStorage.removeItem('registeredUser');
@@ -24,7 +25,7 @@ export const Welcome = ({navigation}) => {
     console.log('Done.');
   }; */
   useEffect(() => {
-    getRegisteredUser();
+    /*  getRegisteredUser(); */
     if (asyncStorageValue?.length > 0) {
       return navigation.navigate('MainScreens', {screen: 'Home'});
     }

@@ -38,7 +38,6 @@ const MainScreens = () => {
 };
 const App = () => {
   const Stack = createNativeStackNavigator();
-  const Tab = createBottomTabNavigator();
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
