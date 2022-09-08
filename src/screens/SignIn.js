@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import Login from '../assets/Login.png';
