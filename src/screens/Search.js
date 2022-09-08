@@ -1,13 +1,33 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {MoviesList} from '../components/MoviesList';
 
 export const Search = () => {
-  const currentMovie = useSelector(state => state.movies);
-  console.log('currentMovie', currentMovie);
+  const [searchInput, setSearchInput] = useState('');
   return (
-    <View>
-      <Text>Search</Text>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.searchMovie}
+        placeholder="Search movie..."
+        onChangeText={text => {
+          setSearchInput(text);
+        }}
+      />
+      <MoviesList
+        type={'search'}
+        input={searchInput.length > 0 ? searchInput : ''}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  searchMovie: {
+    marginTop: 20,
+    height: 50,
+    backgroundColor: 'rgba(55, 54, 54, 0.5)',
+  },
+});
