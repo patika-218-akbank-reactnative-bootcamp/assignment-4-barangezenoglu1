@@ -99,7 +99,6 @@ export const SignIn = ({navigation}) => {
               style={styles.input}
               placeholder={'User Name'}
               placeholderTextColor="grey"
-              secureTextEntry={true}
               value={loggedUser.userName}
               onChangeText={text =>
                 setLoggedUser({...loggedUser, userName: text})

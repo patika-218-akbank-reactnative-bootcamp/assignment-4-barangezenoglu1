@@ -8,7 +8,6 @@ import {useGetsyncStorageValue} from '../hooks/getAsyncStorageValue';
 
 export const Home = () => {
   const asyncStorageValue = useGetsyncStorageValue('registeredUser');
-  console.log('Baran', asyncStorageValue);
   const dispatch = useDispatch();
   const [tabs] = useState(['Top Rated', 'Popular', 'Upcoming']);
   const [selectedTab, setSelectedTab] = useState('Top Rated');
@@ -20,11 +19,11 @@ export const Home = () => {
     // With this function we display content depends to selected tab.
     switch (tab) {
       case 'Top Rated':
-        return <MoviesList title={'Top Rated'} tabType={'top_rated'} />;
+        return <MoviesList title={'Top Rated'} movieFilter={'top_rated'} />;
       case 'Popular':
-        return <MoviesList title={'Popular'} tabType={'popular'} />;
+        return <MoviesList title={'Popular'} movieFilter={'popular'} />;
       case 'Upcoming':
-        return <MoviesList title={'Upcoming'} tabType={'upcoming'} />;
+        return <MoviesList title={'Upcoming'} movieFilter={'upcoming'} />;
     }
   };
 
