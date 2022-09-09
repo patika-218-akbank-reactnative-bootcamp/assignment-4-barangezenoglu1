@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
@@ -22,6 +23,14 @@ export const SignUp = ({navigation}) => {
       return !Object.values(obj).every(element => element !== '');
     }
   };
+  const setUserAsyncStorage = async value => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('registeredUser', jsonValue);
+    } catch (e) {
+      // save error
+    }
+  };
   const handleButtonSubmit = () => {
     setRegisterInfo({
       userMail: enteredUserMail,
@@ -38,6 +47,7 @@ export const SignUp = ({navigation}) => {
     setEnteredUserName('');
     setEnteredUserPassword('');
     setEnteredPasswordAgain('');
+    setUserAsyncStorage(registerInfo);
     navigation.navigate('MainScreens', {screen: 'Home'});
   };
   useEffect(() => {

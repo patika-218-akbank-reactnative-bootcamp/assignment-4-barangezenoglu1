@@ -6,7 +6,6 @@ import {CustomButton} from '../components/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignIn = ({navigation}) => {
-  /* const {setActiveUser} = useContext(ActiveUserContext); */
   const [registeredUsers, setRegisteredUsers] = useState(null);
   const [loggedUser, setLoggedUser] = useState({
     userName: '',
