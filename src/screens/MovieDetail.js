@@ -1,10 +1,50 @@
 import React from 'react';
 import {StyleSheet, Text, View, Dimensions, Image} from 'react-native';
+import {useSelector} from 'react-redux';
 import {DetailBlock} from '../components/DetailBlock';
 
 const windowHeight = Dimensions.get('window').height;
 export const MovieDetail = ({route}) => {
+  const themeColors = useSelector(state => state.theme);
   const {movie} = route.params;
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: themeColors.theme.white,
+    },
+    posterContainer: {
+      height: windowHeight,
+      width: '35%',
+      paddingTop: 50,
+      alignItems: 'center',
+    },
+    detailContainer: {
+      height: windowHeight,
+      width: '65%',
+      paddingTop: 50,
+      paddingLeft: 15,
+    },
+    poster: {
+      width: '100%',
+      height: windowHeight / 1.2,
+    },
+    detailTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      borderBottomWidth: 0.5,
+      borderBottomColor: themeColors.theme.black,
+      color: themeColors.theme.white,
+    },
+    detailDescription: {
+      paddingTop: 10,
+      color: themeColors.theme.black,
+    },
+    detailBlock: {
+      paddingBottom: 10,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.posterContainer}>
@@ -27,42 +67,3 @@ export const MovieDetail = ({route}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  posterContainer: {
-    height: windowHeight,
-    width: '35%',
-
-    paddingTop: 50,
-    alignItems: 'center',
-  },
-  detailContainer: {
-    height: windowHeight,
-    width: '65%',
-
-    paddingTop: 50,
-    paddingLeft: 15,
-  },
-  poster: {
-    width: '100%',
-    height: windowHeight / 1.2,
-  },
-  detailTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'black',
-    color: 'black',
-  },
-  detailDescription: {
-    paddingTop: 10,
-    color: 'black',
-  },
-  detailBlock: {
-    paddingBottom: 10,
-  },
-});
