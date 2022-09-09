@@ -6,26 +6,7 @@ import {useGetsyncStorageValue} from '../hooks/getAsyncStorageValue';
 
 export const Welcome = ({navigation}) => {
   const asyncStorageValue = useGetsyncStorageValue('registeredUser');
-  /*  const [asyncStorageValue, setAsyncStorageValue] = useState();
-  const getRegisteredUser = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('registeredUser');
-      setAsyncStorageValue(jsonValue);
-    } catch (e) {
-      // read error
-    }
-  }; */
-  /* const removeValue = async () => {
-    try {
-      await AsyncStorage.removeItem('registeredUser');
-    } catch (e) {
-      // remove error
-    }
-
-    console.log('Done.');
-  }; */
   useEffect(() => {
-    /*  getRegisteredUser(); */
     if (asyncStorageValue?.length > 0) {
       return navigation.navigate('MainScreens', {screen: 'Home'});
     }

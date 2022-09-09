@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 export const DetailBlock = ({title, description}) => {
   const themeColors = useSelector(state => state.theme);
   const styles = StyleSheet.create({
+    // Styles in component because we use global state data.
     detailTitle: {
       fontSize: 20,
       fontWeight: 'bold',

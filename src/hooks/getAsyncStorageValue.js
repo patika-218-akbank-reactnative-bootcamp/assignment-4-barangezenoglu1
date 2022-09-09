@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 
 export const useGetsyncStorageValue = key => {
   const [asyncStorageValue, setAsyncStorageValue] = useState();
+  // We use this hook for getting current async storage value
   const getRegisteredUser = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(key);

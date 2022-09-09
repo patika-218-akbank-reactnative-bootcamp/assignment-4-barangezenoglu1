@@ -5,9 +5,11 @@ import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import Login from '../assets/Login.png';
 import {CustomButton} from '../components/CustomButton';
 export const SignUp = ({navigation}) => {
-  const [enteredUserMail, setEnteredUserMail] = useState('');
-  const [enteredUserName, setEnteredUserName] = useState('');
-  const [enteredUserPassword, setEnteredUserPassword] = useState('');
+  const [enteredUser, setEnteredUser] = useState({
+    enteredUserMail: '',
+    enteredUserName: '',
+    enteredUserPassword: '',
+  });
   const [enteredPasswordAgain, setEnteredPasswordAgain] = useState('');
   const [registerInfo, setRegisterInfo] = useState({
     userMail: '',
@@ -17,7 +19,7 @@ export const SignUp = ({navigation}) => {
   const isUserEmpty = obj => {
     if (obj === null) {
       return true;
-    } else if (enteredPasswordAgain !== enteredUserPassword) {
+    } else if (enteredPasswordAgain !== enteredUser.enteredUserPassword) {
       return true;
     } else {
       return !Object.values(obj).every(element => element !== '');
@@ -33,9 +35,9 @@ export const SignUp = ({navigation}) => {
   };
   const handleButtonSubmit = () => {
     setRegisterInfo({
-      userMail: enteredUserMail,
-      userName: enteredUserName,
-      userPassword: enteredUserPassword,
+      userMail: enteredUser.enteredUserMail,
+      userName: enteredUser.enteredUserName,
+      userPassword: enteredUser.enteredUserPassword,
     });
     axios.post('http://10.0.2.2:3000/registeredUsers', registerInfo);
     setRegisterInfo({
@@ -43,21 +45,17 @@ export const SignUp = ({navigation}) => {
       userName: '',
       userPassword: '',
     });
-    setEnteredUserMail('');
-    setEnteredUserName('');
-    setEnteredUserPassword('');
-    setEnteredPasswordAgain('');
+    setEnteredUser({
+      enteredUserMail: '',
+      enteredUserName: '',
+      enteredUserPassword: '',
+    });
     setUserAsyncStorage(registerInfo);
     navigation.navigate('MainScreens', {screen: 'Home'});
   };
   useEffect(() => {
-    setRegisterInfo({
-      userMail: enteredUserMail,
-      userName: enteredUserName,
-      userPassword: enteredUserPassword,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enteredUserMail, enteredUserName, enteredUserPassword]);
+    setRegisterInfo(enteredUser);
+  }, [enteredUser]);
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -119,23 +117,29 @@ export const SignUp = ({navigation}) => {
               style={styles.input}
               placeholder={'Email'}
               placeholderTextColor="grey"
-              value={enteredUserMail}
-              onChangeText={text => setEnteredUserMail(text)}
+              value={enteredUser.enteredUserMail}
+              onChangeText={text =>
+                setEnteredUser({...enteredUser, enteredUserMail: text})
+              }
             />
             <TextInput
               style={styles.input}
               placeholder={'User Name'}
               placeholderTextColor="grey"
-              value={enteredUserName}
-              onChangeText={text => setEnteredUserName(text)}
+              value={enteredUser.enteredUserName}
+              onChangeText={text =>
+                setEnteredUser({...enteredUser, enteredUserName: text})
+              }
             />
             <TextInput
               style={styles.input}
               placeholder={'Password'}
               placeholderTextColor="grey"
               secureTextEntry={true}
-              value={enteredUserPassword}
-              onChangeText={text => setEnteredUserPassword(text)}
+              value={enteredUser.enteredUserPassword}
+              onChangeText={text =>
+                setEnteredUser({...enteredUser, enteredUserPassword: text})
+              }
             />
             <TextInput
               style={styles.input}

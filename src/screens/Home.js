@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View, Dimensions} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {MoviesList} from '../components/MoviesList';
 import {Tab} from '../components/Tab';
@@ -7,11 +7,30 @@ import {setActiveUser} from '../features/UserSlice/userSlice';
 import {useGetsyncStorageValue} from '../hooks/getAsyncStorageValue';
 export const Home = ({navigation}) => {
   const themeColors = useSelector(state => state.theme);
-  console.log('theme colors', themeColors);
   const asyncStorageValue = useGetsyncStorageValue('registeredUser');
   const dispatch = useDispatch();
   const [tabs] = useState(['Top Rated', 'Popular', 'Upcoming']);
   const [selectedTab, setSelectedTab] = useState('Top Rated');
+  const styles = StyleSheet.create({
+    // Styles in component because we use global state data.
+    container: {
+      flex: 1,
+      backgroundColor: themeColors.theme.white,
+    },
+    tabContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      backgroundColor: 'rgba(55, 54, 54, 0.8)',
+    },
+    tabs: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      padding: 10,
+      paddingRight: 45,
+    },
+  });
 
   const handlePressTab = tab => {
     setSelectedTab(tab);
@@ -52,25 +71,6 @@ export const Home = ({navigation}) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asyncStorageValue]);
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: themeColors.theme.white,
-    },
-    tabContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      backgroundColor: 'rgba(55, 54, 54, 0.8)',
-    },
-    tabs: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      padding: 10,
-      paddingRight: 45,
-    },
-  });
 
   return (
     <SafeAreaView style={styles.container}>

@@ -1,13 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View, Dimensions} from 'react-native';
 import {useSelector} from 'react-redux';
-import WelcomeLogo from '../assets/WelcomeLogo.png';
 
 const windowWidth = Dimensions.get('window').width;
 
 export const Movie = ({title, voteAverage, posterPath}) => {
   const themeColors = useSelector(state => state.theme);
   const styles = StyleSheet.create({
+    // Styles in component because we use global state data.
     container: {
       position: 'relative',
       backgroundColor: '#D6D0D6',

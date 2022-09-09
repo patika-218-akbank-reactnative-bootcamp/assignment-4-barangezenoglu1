@@ -12,12 +12,10 @@ export const Profile = ({navigation}) => {
   const activeUser = useSelector(state => state.user);
   const themeColors = useSelector(state => state.theme);
   const dispatch = useDispatch();
-
-  console.log('activeUser', activeUser);
   const [editedUser, setEditedUser] = useState({
-    userEmail: '',
-    userName: '',
-    userPassword: '',
+    userEmail: activeUser.user.userEmail,
+    userName: activeUser.user.userName,
+    userPassword: activeUser.user.userPassword,
   });
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -54,6 +52,7 @@ export const Profile = ({navigation}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled]);
   const styles = StyleSheet.create({
+    // Styles in component because we use global state data.
     container: {
       flex: 1,
       backgroundColor: themeColors.theme.white,
