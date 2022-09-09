@@ -1,0 +1,28 @@
+{
+  "registeredUsers": [
+    {
+      "userMail": "barangezen@hotmail.com",
+      "userName": "barangezen",
+      "userPassword": "123123",
+      "id": 1
+    },
+    {
+      "userMail": "alikaner35@hotmail.com",
+      "userName": "dombikali",
+      "userPassword": "123456",
+      "id": 2
+    },
+    {
+      "userMail": "oguztriplers@hotmail.com",
+      "userName": "mt07lover",
+      "userPassword": "121212",
+      "id": 3
+    },
+    {
+      "userMail": "efeaktas@hotmail.com",
+      "userName": "zenginefe",
+      "userPassword": "313131",
+      "id": 4
+    }
+  ]
+}
