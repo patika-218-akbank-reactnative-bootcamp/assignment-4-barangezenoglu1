@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {MoviesList} from '../components/MoviesList';
 
-export const Search = () => {
+export const Search = ({navigation}) => {
   const [searchInput, setSearchInput] = useState('');
   return (
     <View style={styles.container}>
@@ -14,6 +14,7 @@ export const Search = () => {
         }}
       />
       <MoviesList
+        navigation={navigation}
         type={'search'}
         input={searchInput.length > 0 ? searchInput : ''}
       />

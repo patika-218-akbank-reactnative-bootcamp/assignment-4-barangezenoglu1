@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Dimensions} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {MoviesList} from '../components/MoviesList';
 import {Tab} from '../components/Tab';
 import {setActiveUser} from '../features/UserSlice/userSlice';
 import {useGetsyncStorageValue} from '../hooks/getAsyncStorageValue';
-
-export const Home = () => {
+const windowWidth = Dimensions.get('window').width;
+export const Home = ({navigation}) => {
   const asyncStorageValue = useGetsyncStorageValue('registeredUser');
   const dispatch = useDispatch();
   const [tabs] = useState(['Top Rated', 'Popular', 'Upcoming']);
@@ -19,11 +19,29 @@ export const Home = () => {
     // With this function we display content depends to selected tab.
     switch (tab) {
       case 'Top Rated':
-        return <MoviesList title={'Top Rated'} movieFilter={'top_rated'} />;
+        return (
+          <MoviesList
+            title={'Top Rated'}
+            movieFilter={'top_rated'}
+            navigation={navigation}
+          />
+        );
       case 'Popular':
-        return <MoviesList title={'Popular'} movieFilter={'popular'} />;
+        return (
+          <MoviesList
+            title={'Popular'}
+            movieFilter={'popular'}
+            navigation={navigation}
+          />
+        );
       case 'Upcoming':
-        return <MoviesList title={'Upcoming'} movieFilter={'upcoming'} />;
+        return (
+          <MoviesList
+            title={'Upcoming'}
+            movieFilter={'upcoming'}
+            navigation={navigation}
+          />
+        );
     }
   };
 
@@ -65,8 +83,9 @@ const styles = StyleSheet.create({
   tabs: {
     display: 'flex',
     flexDirection: 'row',
-    paddingRight: 70,
+    justifyContent: 'space-between',
     padding: 10,
+    paddingRight: 45,
   },
   icons: {
     display: 'flex',

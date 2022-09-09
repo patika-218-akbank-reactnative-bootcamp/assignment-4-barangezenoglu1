@@ -12,15 +12,16 @@ import {store} from './src/store';
 import {Search} from './src/screens/Search';
 import {Profile} from './src/screens/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {MovieDetail} from './src/screens/MovieDetail';
 Ionicons.loadFont();
 const MainScreens = () => {
   const loadIcons = route => {
     if (route.name === 'Home') {
-      return <Ionicons name="md-home-outline" size={30} />;
+      return <Ionicons name="md-home-outline" size={30} color={'black'} />;
     } else if (route.name === 'Search') {
-      return <Ionicons name="search-outline" size={30} />;
+      return <Ionicons name="search-outline" size={30} color={'black'} />;
     } else if (route.name === 'Profile') {
-      return <Ionicons name="settings-outline" size={30} />;
+      return <Ionicons name="settings-outline" size={30} color={'black'} />;
     }
   };
   const Tab = createBottomTabNavigator();
@@ -47,6 +48,7 @@ const App = () => {
             <Stack.Screen name="MainScreens" component={MainScreens} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="MovieDetail" component={MovieDetail} />
           </Stack.Navigator>
         </Provider>
       </NavigationContainer>

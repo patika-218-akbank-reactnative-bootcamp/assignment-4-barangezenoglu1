@@ -1,13 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View, Dimensions} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Pressable,
+} from 'react-native';
 import {Movie} from './Movie';
 import {useDispatch} from 'react-redux';
 import {setCurrentMovies} from '../features/MovieSlice/moviesSlice';
 const apiKey = 'e770a46ceb191a058215eeb6a58ec919';
 const windowWidth = Dimensions.get('window').width;
-export const MoviesList = ({movieFilter, type, input}) => {
+export const MoviesList = ({movieFilter, type, input, navigation}) => {
   const [movies, setMovies] = useState();
   const dispatch = useDispatch();
   const URL =
@@ -19,12 +26,15 @@ export const MoviesList = ({movieFilter, type, input}) => {
     if (movies?.length > 0) {
       return movies?.map(movie => {
         return (
-          <Movie
+          <Pressable
             key={movie.id}
-            title={movie.title}
-            voteAverage={movie.vote_average}
-            posterPath={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          />
+            onPress={() => navigation.navigate('MovieDetail', {movie})}>
+            <Movie
+              title={movie.title}
+              voteAverage={movie.vote_average}
+              posterPath={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            />
+          </Pressable>
         );
       });
     } else {
